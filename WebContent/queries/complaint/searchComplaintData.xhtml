@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/template.xhtml">
+   <ui:define name="content">
+	  
+	  <h:form id="formNoResult" rendered="#{facade.fCid.searchComplaintRecord.complaint==null}">
+		  <h2>Queries - Error Message</h2>
+		  <h:outputLabel value="Complaint #{facade.fCid.searchComplaintRecord.complaintCode} not found" />
+	  </h:form>
+
+	  <h:form id="form" rendered="#{facade.fCid.searchComplaintRecord.complaint!=null}">
+		  <h1>Search response:</h1>
+		  <h1>Complaint: <h:outputLabel value="#{facade.fCid.searchComplaintRecord.complaint.codigo}" /> </h1>
+
+		  <h:panelGroup rendered="#{facade.fCid.searchComplaintRecord.validFoodComplaint()}">
+		  	<ui:include src="/queries/complaint/foodComplaintData.xhtml" />
+		  </h:panelGroup>
+		  
+		  <h:panelGroup rendered="#{facade.fCid.searchComplaintRecord.validAnimalComplaint()}">
+		  	<ui:include src="/queries/complaint/animalComplaintData.xhtml" />
+		  </h:panelGroup>
+
+		  <h:panelGroup rendered="#{facade.fCid.searchComplaintRecord.validSpecialComplaint()}">
+		  	<ui:include src="/queries/complaint/specialComplaintData.xhtml" />
+		  </h:panelGroup>
+		  
+		  <h:messages id="messages" styleClass="messages" />
+	  </h:form>   	  
+
+   	  <center>
+	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/queries/queriesMenu.jsf">
+	   	  	Queries' Menu
+	   	  </h:outputLink>
+   	  	  -   	  
+	   	  <h:outputLink value="#{facesContext.externalContext.request.contextPath}/home.jsf">
+	   	  	Main Menu
+	   	  </h:outputLink>
+	   	  
+	  </center>
+   </ui:define>
+</ui:composition>
