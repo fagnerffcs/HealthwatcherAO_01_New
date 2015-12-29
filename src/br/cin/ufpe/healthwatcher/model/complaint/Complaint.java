@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.model.complaint;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -11,21 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
+import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
 @MappedSuperclass
-public abstract class Complaint implements Serializable {
+public abstract class Complaint {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
-	private int codigo;
+	private int code;
 
 	@NotNull
 	@Column(length = 100)
@@ -55,7 +54,8 @@ public abstract class Complaint implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataQueixa;
 
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="enderecosolicitante_code")
 	private Address enderecoSolicitante;
 
 	private long timestamp; // TODO para tratamento de concorrencia (scbs)
@@ -69,7 +69,7 @@ public abstract class Complaint implements Serializable {
 			Address enderecoSolicitante, long timestamp) {
 
 		//Numero fica vazio por enquanto - no Repositorio ele eh inicializado
-		this.codigo = 0;
+		this.code = 0;
 		this.solicitante = solicitante;
 		this.descricao = descricao;
 		this.observacao = observacao;
@@ -91,11 +91,11 @@ public abstract class Complaint implements Serializable {
 	}
 
 	public int getCodigo() {
-		return codigo;
+		return code;
 	}
 
 	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+		this.code = codigo;
 	}
 
 	public Date getDataParecer() {
@@ -175,7 +175,7 @@ public abstract class Complaint implements Serializable {
 		this.timestamp = timestamp + 1;
 	}
 
-	@Override
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -195,6 +195,6 @@ public abstract class Complaint implements Serializable {
 		if (codigo != other.codigo)
 			return false;
 		return true;
-	}
+	}*/
 	
 }

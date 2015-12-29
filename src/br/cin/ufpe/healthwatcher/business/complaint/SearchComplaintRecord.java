@@ -20,8 +20,8 @@ import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.complaint.AnimalComplaint;
 import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
 import br.cin.ufpe.healthwatcher.model.complaint.FoodComplaint;
-import br.cin.ufpe.healthwatcher.model.complaint.Situacao;
 import br.cin.ufpe.healthwatcher.model.complaint.SpecialComplaint;
+import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
 @ManagedBean
 @SessionScoped

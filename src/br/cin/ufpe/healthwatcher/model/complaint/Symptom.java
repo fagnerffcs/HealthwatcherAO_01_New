@@ -12,12 +12,10 @@ import javax.persistence.*;
  * @author m_rocha
  */
 @Entity
-
 public class Symptom implements Serializable {
 	private static final long serialVersionUID = 1L;
 	   
 	@Id
-	@GeneratedValue
 	private Integer code;
 	
 	@Column(length = 100)

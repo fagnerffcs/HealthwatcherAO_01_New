@@ -26,7 +26,7 @@ import br.cin.ufpe.healthwatcher.business.employee.EmployeeLogin;
 import br.cin.ufpe.healthwatcher.data.IComplaintRepository;
 import br.cin.ufpe.healthwatcher.model.complaint.AnimalComplaint;
 import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
-import br.cin.ufpe.healthwatcher.model.complaint.Situacao;
+import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 import br.cin.ufpe.healthwatcher.util.JPAUtil;
 
 public class AnimalComplaintRepositoryRDB implements Serializable, IComplaintRepository {

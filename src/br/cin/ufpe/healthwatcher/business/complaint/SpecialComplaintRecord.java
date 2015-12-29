@@ -11,9 +11,9 @@ import javax.faces.context.FacesContext;
 
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.address.Address;
-import br.cin.ufpe.healthwatcher.model.complaint.Situacao;
 import br.cin.ufpe.healthwatcher.model.complaint.SpecialComplaint;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
+import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
 @ManagedBean
 @ViewScoped

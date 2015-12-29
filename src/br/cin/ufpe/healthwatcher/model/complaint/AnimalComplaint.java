@@ -5,19 +5,15 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
 
-@Entity
 @NamedQueries({
-	@NamedQuery(name="animalComplaintByCode", query="SELECT a FROM AnimalComplaint a WHERE a.codigo = :code"),
+	@NamedQuery(name="animalComplaintByCode", query="SELECT a FROM AnimalComplaint a WHERE a.code = :code"),
 	@NamedQuery(name="allAnimalComplaints", query="SELECT a FROM AnimalComplaint a"),
 	@NamedQuery(name="animalComplaintsBySituation", query="SELECT a FROM AnimalComplaint a WHERE a.situacao = :situacao"),
 })
@@ -26,7 +22,6 @@ public class AnimalComplaint extends Complaint implements Serializable {
 	
 	private Short animalQuantity;
 	
-	@Temporal(TemporalType.DATE)
 	private Date inconvenienceDate;
 	
 	@Column(length = 100)

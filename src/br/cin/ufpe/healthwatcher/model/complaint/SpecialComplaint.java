@@ -1,28 +1,12 @@
 package br.cin.ufpe.healthwatcher.model.complaint;
 
-import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
 
-/**
- * Entity implementation class for Entity: SpecialComplaint
- *
- */
 @Entity
-@NamedQueries({
-	@NamedQuery(name="specialComplaintByCode", query="SELECT s FROM SpecialComplaint s WHERE s.codigo = :code"),
-	@NamedQuery(name="allSpecialComplaints", query="SELECT s FROM SpecialComplaint s"),
-	@NamedQuery(name="specialComplaintsBySituation", query="SELECT s FROM SpecialComplaint s WHERE s.situacao = :situacao")
-})
-public class SpecialComplaint extends Complaint implements Serializable {
+public class SpecialComplaint extends Complaint {
 	private static final long serialVersionUID = 1L;
 	
 	private Short idade;
@@ -33,8 +17,6 @@ public class SpecialComplaint extends Complaint implements Serializable {
 	@Column(length = 100)
 	private String ocupacao;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "code")
 	private Address enderecoOcorrencia;
 
 

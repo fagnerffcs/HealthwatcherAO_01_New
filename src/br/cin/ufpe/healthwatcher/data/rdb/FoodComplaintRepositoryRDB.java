@@ -42,6 +42,7 @@ public class FoodComplaintRepositoryRDB implements Serializable, IComplaintRepos
 			ObjectAlreadyInsertedException, ObjectNotValidException,
 			RepositoryException {
 		FoodComplaint foodComplaint = (FoodComplaint) complaint;
+		log.info("Registrando foodComplaint sobre " + foodComplaint.getDescricao());
 		HealthWatcherFacade fachada = null;
 		try {
 			fachada = HealthWatcherFacade.getInstance();
@@ -62,7 +63,6 @@ public class FoodComplaintRepositoryRDB implements Serializable, IComplaintRepos
 			}
 		}
 		
-		log.info("Registrando foodComplaint sobre " + foodComplaint.getDescricao());
 		EntityManager em;
 		try {
 			em = (EntityManager) this.mp.getCommunicationChannel();

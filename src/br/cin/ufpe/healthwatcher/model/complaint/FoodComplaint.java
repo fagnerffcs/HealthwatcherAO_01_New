@@ -17,9 +17,8 @@ import br.cin.ufpe.healthwatcher.model.address.Address;
  * Entity implementation class for Entity: FoodComplaint
  *
  */
-@Entity
 @NamedQueries({
-	@NamedQuery(name="foodComplaintByCode", query="SELECT f FROM FoodComplaint f WHERE f.codigo = :code"),
+	@NamedQuery(name="foodComplaintByCode", query="SELECT f FROM FoodComplaint f WHERE f.code = :code"),
 	@NamedQuery(name="allFoodComplaints", query="SELECT f FROM FoodComplaint f"),
 	@NamedQuery(name="allFoodComplaintsBySituation", query="SELECT f FROM FoodComplaint f WHERE f.situacao = :situacao"),
 })

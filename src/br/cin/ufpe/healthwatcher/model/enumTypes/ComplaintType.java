@@ -1,4 +1,4 @@
-package br.cin.ufpe.healthwatcher.model.complaint;
+package br.cin.ufpe.healthwatcher.model.enumTypes;
 
 public enum ComplaintType {
 
