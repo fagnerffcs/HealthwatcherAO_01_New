@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.business.employee;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
@@ -11,10 +10,6 @@ import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
-import lib.exceptions.PersistenceMechanismException;
-import lib.exceptions.RepositoryException;
-import lib.exceptions.TransactionException;
-import lib.exceptions.UpdateEntryException;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -96,8 +91,7 @@ public class EmployeeEdit implements Serializable {
 				facade = HealthWatcherFacade.getInstance();
 			}
 			facade.updateEmployee(employee);
-		} catch (ObjectNotValidException | ObjectNotFoundException
-				| RepositoryException | PersistenceMechanismException | IOException | TransactionException | UpdateEntryException e) {
+		} catch (ObjectNotValidException | ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
 		return "menuEmployee.jsf?faces-redirect=true";

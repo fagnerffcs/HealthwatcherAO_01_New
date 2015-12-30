@@ -27,14 +27,12 @@ public class ComplaintRecord implements Serializable {
 		this.complaintRep = rep;
 	}
 
-	public Complaint searchComplaint(int code) throws RepositoryException,
-			ObjectNotFoundException {
+	public Complaint searchComplaint(int code) throws ObjectNotFoundException {
 		return complaintRep.search(code);
 	}
 
-	public int insert(Complaint complaint) throws RepositoryException,
-			ObjectAlreadyInsertedException, ObjectNotValidException,
-			TransactionException {
+	public int insert(Complaint complaint)
+			throws ObjectAlreadyInsertedException, ObjectNotValidException {
 		if (complaintRep.exists(complaint.getCodigo())) {
 			throw new ObjectAlreadyInsertedException(
 					"Complaint code already registered");
@@ -42,20 +40,20 @@ public class ComplaintRecord implements Serializable {
 		return complaintRep.insert(complaint);
 	}
 
-	public void update(Complaint q) throws RepositoryException,
-			ObjectNotFoundException, ObjectNotValidException {
+	public void update(Complaint q) throws ObjectNotFoundException,
+			ObjectNotValidException {
 		complaintRep.update(q);
 	}
 
-	public IteratorDsk getComplaintList() throws RepositoryException,
-			ObjectNotFoundException {
+	public IteratorDsk getComplaintList() throws ObjectNotFoundException {
 		return complaintRep.getComplaintList();
 
 	}
 
 	public Complaint getComplaint() {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		Integer code = (Integer) facesContext.getExternalContext().getFlash().get("complaintCode");
+		Integer code = (Integer) facesContext.getExternalContext().getFlash()
+				.get("complaintCode");
 		try {
 			this.complaint = this.complaintRep.search(code);
 		} catch (ObjectNotFoundException | RepositoryException e) {

@@ -1,21 +1,12 @@
 package br.cin.ufpe.healthwatcher.model.complaint;
 
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
-import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: Symptom
- * @version 1.0
- * @date 2015-04-05 14:48:00
- * @author m_rocha
- */
-@Entity
+import javax.persistence.Column;
+
 public class Symptom implements Serializable {
 	private static final long serialVersionUID = 1L;
 	   
-	@Id
 	private Integer code;
 	
 	@Column(length = 100)

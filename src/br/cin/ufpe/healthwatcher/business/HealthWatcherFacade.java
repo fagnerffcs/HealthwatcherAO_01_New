@@ -1,22 +1,17 @@
 package br.cin.ufpe.healthwatcher.business;
 
-import java.io.IOException;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import lib.exceptions.InsertEntryException;
 import lib.exceptions.ObjectAlreadyInsertedException;
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
-import lib.exceptions.PersistenceMechanismException;
-import lib.exceptions.RepositoryException;
-import lib.exceptions.TransactionException;
-import lib.exceptions.UpdateEntryException;
-import lib.persistence.IPersistenceMechanism;
-import lib.persistence.PersistenceMechanism;
 import lib.util.IteratorDsk;
-import br.cin.ufpe.healthwatcher.Constants;
+import br.cin.ufpe.healthwatcher.business.complaint.ComplaintRecord;
+import br.cin.ufpe.healthwatcher.business.complaint.DiseaseRecord;
+import br.cin.ufpe.healthwatcher.business.employee.EmployeeRecord;
+import br.cin.ufpe.healthwatcher.business.healthguide.HealthUnitRecord;
+import br.cin.ufpe.healthwatcher.business.healthguide.MedicalSpecialtyRecord;
 import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
 import br.cin.ufpe.healthwatcher.model.complaint.DiseaseType;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
@@ -28,170 +23,95 @@ public class HealthWatcherFacade implements IFacade {
 	
 	private static HealthWatcherFacade singleton; //padrao singleton
 	
-	private HealthWatcherFacadeInit fCid;
+	private ComplaintRecord complaintRecord;
 
-	public HealthWatcherFacadeInit getfCid() {
-		return fCid;
-	}
+	private HealthUnitRecord healthUnitRecord;
 
-	private static IPersistenceMechanism pm = null;
+	private MedicalSpecialtyRecord specialityRecord;
 
-	private static boolean pmCreated = false;
+	private DiseaseRecord diseaseRecord;
+
+	private EmployeeRecord employeeRecord;	
 	
-	public HealthWatcherFacade() {
-		if(fCid==null){
-			this.fCid = new HealthWatcherFacadeInit();
-		}
+	private HealthWatcherFacade(){
+		this.complaintRecord = new ComplaintRecord(null);
+		this.healthUnitRecord = new HealthUnitRecord(null);
+		this.specialityRecord = new MedicalSpecialtyRecord(null);
+		this.diseaseRecord = new DiseaseRecord(null);
+		this.employeeRecord = new EmployeeRecord(null);		
 	}
 	
-	public static IPersistenceMechanism getPm() {
-		if (!pmCreated) {
-			pm = pmInit();
-			if (pm != null) {
-				pmCreated = true;
-			}
-		}
-		return pm;
-	}
-	
-	static boolean isPersistent() {
-		return Constants.isPersistent();
-	}	
-	
-	static IPersistenceMechanism pmInit() {
-		IPersistenceMechanism returnValue = null;
-		if (isPersistent()) {
-			try {
-				returnValue = PersistenceMechanism.getInstance();
-				// Persistence mechanism connection
-				returnValue.connect();
-			} catch (PersistenceMechanismException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				// Persistence mechanism desconnection for resource release
-				try {
-					if (getPm() != null) {
-						getPm().disconnect();
-					}
-				} catch (PersistenceMechanismException mpe) {
-					mpe.printStackTrace();
-				}
-			}
-		}
-		return returnValue;
-	}
-	
-	public static HealthWatcherFacade getInstance() throws PersistenceMechanismException, IOException {
+	public synchronized static HealthWatcherFacade getInstance() {
 		if (singleton == null) {
-			// Obtain valid persistence mechanism instance
-			getPm();
 			singleton = new HealthWatcherFacade();
 		}
 		return singleton;
-	}	
+	}
+			
+	public void updateHealthUnit(HealthUnit unit) throws ObjectNotFoundException, ObjectNotValidException {
+		healthUnitRecord.update(unit);
+	}
 
-	@Override
-	public void updateComplaint(Complaint q) throws TransactionException,
-			RepositoryException, ObjectNotFoundException,
+	public void updateComplaint(Complaint complaint) throws ObjectNotFoundException, ObjectNotValidException {
+		complaintRecord.update(complaint);
+	}
+
+	public IteratorDsk searchSpecialitiesByHealthUnit(int code) throws ObjectNotFoundException {
+		return healthUnitRecord.searchSpecialitiesByHealthUnit(code);
+	}
+
+	public Complaint searchComplaint(int code) throws ObjectNotFoundException {
+		return complaintRecord.searchComplaint(code);
+	}
+
+	public DiseaseType searchDiseaseType(int code) throws ObjectNotFoundException {
+		return diseaseRecord.searchDiseaseType(code);
+	}
+
+	public IteratorDsk searchHealthUnitsBySpeciality(int code) throws ObjectNotFoundException {
+		return healthUnitRecord.searchHealthUnitsBySpeciality(code);
+	}
+
+	public IteratorDsk getSpecialityList() throws ObjectNotFoundException {
+		return specialityRecord.getListaEspecialidade();
+	}
+
+	public IteratorDsk getDiseaseTypeList() throws ObjectNotFoundException {
+		return diseaseRecord.getDiseaseTypeList();
+	}
+
+	public HealthUnit searchHealthUnit(int healthUnitCode) throws ObjectNotFoundException {
+		return healthUnitRecord.search(healthUnitCode);
+	}
+
+	public IteratorDsk getHealthUnitList() throws ObjectNotFoundException {
+		return healthUnitRecord.getHealthUnitList();
+	}
+
+	public IteratorDsk getPartialHealthUnitList() throws ObjectNotFoundException {
+		return healthUnitRecord.getPartialHealthUnitList();
+	}
+
+	public void insert(Employee employee) throws ObjectAlreadyInsertedException,
 			ObjectNotValidException {
-		fCid.updateComplaint(q);
+		employeeRecord.insert(employee);
 	}
 
-	@Override
-	public IteratorDsk searchSpecialitiesByHealthUnit(int code)
-			throws ObjectNotFoundException, RepositoryException,
-			TransactionException {
-		return fCid.searchSpecialitiesByHealthUnit(code);
+	public int insertComplaint(Complaint complaint) throws ObjectAlreadyInsertedException, ObjectNotValidException {
+		return complaintRecord.insert(complaint);
 	}
 
-	@Override
-	public Complaint searchComplaint(int code) throws RepositoryException,
-			ObjectNotFoundException, TransactionException {
-		return fCid.searchComplaint(code);
+	public Employee searchEmployee(String login) throws ObjectNotFoundException {
+		return employeeRecord.search(login);
 	}
 
-	@Override
-	public DiseaseType searchDiseaseType(int code) throws RepositoryException,
-			ObjectNotFoundException, TransactionException {
-		return fCid.searchDiseaseType(code);
+	public IteratorDsk getComplaintList() throws ObjectNotFoundException {
+		return complaintRecord.getComplaintList();
 	}
 
-	@Override
-	public IteratorDsk searchHealthUnitsBySpeciality(int code)
-			throws ObjectNotFoundException, RepositoryException,
-			TransactionException {
-		return fCid.searchHealthUnitsBySpeciality(code);
-	}
-
-	@Override
-	public IteratorDsk getSpecialityList()
-			throws RepositoryException, ObjectNotFoundException,
-			TransactionException {
-		return fCid.getSpecialityList();
-	}
-
-	@Override
-	public IteratorDsk getDiseaseTypeList() throws RepositoryException,
-			ObjectNotFoundException, TransactionException {
-		return (IteratorDsk) fCid.getDiseaseTypeList();
-	}
-
-	@Override
-	public IteratorDsk getHealthUnitList() throws RepositoryException,
-			ObjectNotFoundException, TransactionException {
-		return fCid.getHealthUnitList();
-	}
-
-	@Override
-	public IteratorDsk getPartialHealthUnitList()
-			throws RepositoryException, ObjectNotFoundException,
-			TransactionException {
-		return fCid.getPartialHealthUnitList();
-	}
-
-	@Override
-	public int insertComplaint(Complaint complaint) throws RepositoryException,
-			ObjectAlreadyInsertedException, TransactionException,
+	public void updateEmployee(Employee employee) throws ObjectNotFoundException,
 			ObjectNotValidException {
-		return fCid.insertComplaint(complaint);
-	}
-
-	@Override
-	public void updateHealthUnit(HealthUnit unit) throws RepositoryException,
-			TransactionException, ObjectNotFoundException {
-		fCid.updateHealthUnit(unit);
-	}
-
-	@Override
-	public IteratorDsk getComplaintList() throws ObjectNotFoundException,
-			TransactionException {
-		return fCid.getComplaintList();
-	}
-
-	@Override
-	public void insert(Employee e) throws ObjectAlreadyInsertedException,
-			ObjectNotValidException, InsertEntryException, TransactionException {
-		fCid.insert(e);
-	}
-
-	@Override
-	public void updateEmployee(Employee e) throws TransactionException,
-			RepositoryException, ObjectNotFoundException,
-			ObjectNotValidException, UpdateEntryException {
-		fCid.update(e);
-	}
-
-	@Override
-	public Employee searchEmployee(String login) throws TransactionException,
-			RepositoryException, ObjectNotFoundException,
-			ObjectNotValidException, UpdateEntryException {
-		return fCid.searchEmployee(login);
-	}
-
-	@Override
-	public HealthUnit searchHealthUnit(int healthUnitCode)
-			throws ObjectNotFoundException, RepositoryException {
-		return fCid.searchHealthUnit(healthUnitCode);
+		employeeRecord.update(employee);
 	}
 	
 }

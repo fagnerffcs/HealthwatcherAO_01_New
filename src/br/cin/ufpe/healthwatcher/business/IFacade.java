@@ -1,12 +1,8 @@
 package br.cin.ufpe.healthwatcher.business;
 
-import lib.exceptions.CommunicationException;
-import lib.exceptions.InsertEntryException;
 import lib.exceptions.ObjectAlreadyInsertedException;
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
-import lib.exceptions.RepositoryException;
-import lib.exceptions.TransactionException;
 import lib.exceptions.UpdateEntryException;
 import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
@@ -15,73 +11,48 @@ import br.cin.ufpe.healthwatcher.model.employee.Employee;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
 public interface IFacade {
-
-	public void updateComplaint(Complaint q) throws TransactionException,
-			RepositoryException, ObjectNotFoundException,
-			ObjectNotValidException, CommunicationException,
-			java.rmi.RemoteException;
+	public void updateComplaint(Complaint q) throws ObjectNotFoundException,
+			ObjectNotValidException;
 
 	public IteratorDsk searchSpecialitiesByHealthUnit(int code)
-			throws ObjectNotFoundException, RepositoryException,
-			CommunicationException, TransactionException,
-			java.rmi.RemoteException;
+			throws ObjectNotFoundException;
 
-	public Complaint searchComplaint(int code) throws RepositoryException,
-			ObjectNotFoundException, CommunicationException,
-			TransactionException;
+	public Complaint searchComplaint(int code) throws ObjectNotFoundException;
 
-	public DiseaseType searchDiseaseType(int code) throws RepositoryException,
-			ObjectNotFoundException, CommunicationException,
-			TransactionException;
+	public DiseaseType searchDiseaseType(int code)
+			throws ObjectNotFoundException;
 
 	public IteratorDsk searchHealthUnitsBySpeciality(int code)
-			throws ObjectNotFoundException, RepositoryException,
-			TransactionException, CommunicationException,
-			java.rmi.RemoteException;
+			throws ObjectNotFoundException;
 
-	public IteratorDsk getSpecialityList() throws RepositoryException,
-			ObjectNotFoundException, CommunicationException,
-			TransactionException;
+	public IteratorDsk getSpecialityList() throws ObjectNotFoundException;
 
-	public IteratorDsk getDiseaseTypeList() throws RepositoryException,
-			ObjectNotFoundException, CommunicationException,
-			TransactionException;
+	public IteratorDsk getDiseaseTypeList() throws ObjectNotFoundException;
 
-	public IteratorDsk getHealthUnitList() throws RepositoryException,
-			ObjectNotFoundException, CommunicationException,
-			TransactionException;
+	public IteratorDsk getHealthUnitList() throws ObjectNotFoundException;
 
-	public IteratorDsk getPartialHealthUnitList() throws RepositoryException,
-			ObjectNotFoundException, CommunicationException,
-			TransactionException;
+	public IteratorDsk getPartialHealthUnitList()
+			throws ObjectNotFoundException;
 
-	public int insertComplaint(Complaint complaint) throws RepositoryException,
-			ObjectAlreadyInsertedException, CommunicationException,
-			TransactionException, ObjectNotValidException,
-			java.rmi.RemoteException;
+	public int insertComplaint(Complaint complaint)
+			throws ObjectAlreadyInsertedException, ObjectNotValidException;
 
-	public void updateHealthUnit(HealthUnit unit) throws RepositoryException,
-			TransactionException, ObjectNotFoundException,
-			java.rmi.RemoteException;
+	public void updateHealthUnit(HealthUnit unit)
+			throws ObjectNotFoundException, ObjectNotValidException;
 
-	public IteratorDsk getComplaintList() throws ObjectNotFoundException,
-			TransactionException;
+	public IteratorDsk getComplaintList() throws ObjectNotFoundException;
 
 	public void insert(Employee e) throws ObjectAlreadyInsertedException,
-			ObjectNotValidException, InsertEntryException, TransactionException;
+			ObjectNotValidException;
 
-	public void updateEmployee(Employee e) throws TransactionException,
-			RepositoryException, ObjectNotFoundException,
-			ObjectNotValidException, UpdateEntryException,
-			CommunicationException;
+	public void updateEmployee(Employee e) throws ObjectNotFoundException,
+			ObjectNotValidException, UpdateEntryException;
 
-	public Employee searchEmployee(String login) throws TransactionException,
-			RepositoryException, ObjectNotFoundException,
-			ObjectNotValidException, UpdateEntryException,
-			CommunicationException;
+	public Employee searchEmployee(String login)
+			throws ObjectNotFoundException, ObjectNotValidException,
+			UpdateEntryException;
 
 	public HealthUnit searchHealthUnit(int healthUnitCode)
-			throws ObjectNotFoundException, RepositoryException,
-			java.rmi.RemoteException;
+			throws ObjectNotFoundException;
 
 }

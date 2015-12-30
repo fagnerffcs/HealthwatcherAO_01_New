@@ -3,18 +3,10 @@ package br.cin.ufpe.healthwatcher.model.employee;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Entity
-@NamedQueries({
-	@NamedQuery(name="todosEmployees", query="SELECT e FROM Employee e"),
-	@NamedQuery(name="employeePorLoginSenha", query="SELECT e FROM Employee e WHERE e.login = :login AND e.password = :password"),
-})
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 

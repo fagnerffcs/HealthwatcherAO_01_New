@@ -3,20 +3,10 @@ package br.cin.ufpe.healthwatcher.model.complaint;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
 
-@NamedQueries({
-	@NamedQuery(name="animalComplaintByCode", query="SELECT a FROM AnimalComplaint a WHERE a.code = :code"),
-	@NamedQuery(name="allAnimalComplaints", query="SELECT a FROM AnimalComplaint a"),
-	@NamedQuery(name="animalComplaintsBySituation", query="SELECT a FROM AnimalComplaint a WHERE a.situacao = :situacao"),
-})
 public class AnimalComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -27,8 +17,6 @@ public class AnimalComplaint extends Complaint implements Serializable {
 	@Column(length = 100)
 	private String animal;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "code")
 	private Address occurenceLocalAddress;
 	
 	public AnimalComplaint() {

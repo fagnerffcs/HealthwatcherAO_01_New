@@ -1,11 +1,9 @@
 package br.cin.ufpe.healthwatcher.model.complaint;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
 
-@Entity
 public class SpecialComplaint extends Complaint {
 	private static final long serialVersionUID = 1L;
 	
@@ -18,7 +16,6 @@ public class SpecialComplaint extends Complaint {
 	private String ocupacao;
 	
 	private Address enderecoOcorrencia;
-
 
 	public SpecialComplaint() {
 		super();

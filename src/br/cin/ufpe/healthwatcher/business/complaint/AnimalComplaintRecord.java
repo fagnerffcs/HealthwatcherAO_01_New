@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.business.complaint;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +16,7 @@ import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
 @ManagedBean
 @ViewScoped
-public class AnimalComplaintRecord implements Serializable {
+public class AnimalComplaintRecord {
 	
 	private static final long serialVersionUID = 7502327389893929089L;
 

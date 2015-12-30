@@ -43,11 +43,11 @@ public class EmployeeRecord implements Serializable {
 		this.employee = new Employee();
 	}
 	
-	public Employee search(String login) throws ObjectNotFoundException, RepositoryException {
+	public Employee search(String login) throws ObjectNotFoundException {
 		return employeeRepository.search(login);
 	}
 
-	public String insert(Employee employee) throws ObjectNotValidException, ObjectAlreadyInsertedException, ObjectNotValidException, RepositoryException {
+	public String insert(Employee employee) throws ObjectNotValidException, ObjectAlreadyInsertedException, ObjectNotValidException {
 		if (employeeRepository.exists(employee.getLogin())) {
 			//TODO:alterar para usar a mensagem de excecao do bundle
 			//throw new ObjectAlreadyInsertedException(ExceptionMessages.EXC_JA_EXISTE);
@@ -59,7 +59,7 @@ public class EmployeeRecord implements Serializable {
 		return "menuEmployee.xhtml?faces-redirect=true";
 	}
 
-	public void update(Employee employee) throws ObjectNotValidException, ObjectNotFoundException, ObjectNotValidException, RepositoryException {
+	public void update(Employee employee) throws ObjectNotValidException, ObjectNotFoundException, ObjectNotValidException {
 		employeeRepository.update(employee);
 	}
 	

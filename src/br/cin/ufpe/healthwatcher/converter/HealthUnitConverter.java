@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.converter;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
@@ -10,8 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
 import lib.exceptions.ObjectNotFoundException;
-import lib.exceptions.PersistenceMechanismException;
-import lib.exceptions.RepositoryException;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
@@ -27,9 +24,9 @@ public class HealthUnitConverter implements Converter, Serializable {
 			HealthWatcherFacade facade;
 			try {
 				facade = HealthWatcherFacade.getInstance();
-				HealthUnit hu = facade.getfCid().getHealthUnitRecord().search(Integer.parseInt(value));
+				HealthUnit hu = facade.searchHealthUnit(Integer.parseInt(value));
 				return hu;				
-			} catch (NumberFormatException | PersistenceMechanismException | IOException | ObjectNotFoundException | RepositoryException e) {
+			} catch (NumberFormatException | ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
 		}

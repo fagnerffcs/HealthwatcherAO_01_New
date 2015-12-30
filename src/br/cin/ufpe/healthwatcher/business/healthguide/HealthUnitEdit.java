@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
-import lib.exceptions.RepositoryException;
 import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
@@ -32,7 +31,7 @@ public class HealthUnitEdit implements Serializable {
 		try{
 			facade = HealthWatcherFacade.getInstance();
 			if(code!=null){
-				this.selectedHealthUnit = facade.getfCid().getHealthUnitRecord().search(code);
+				this.selectedHealthUnit = facade.searchHealthUnit(code);
 			}
 			IteratorDsk it = facade.getHealthUnitList();
 			List<HealthUnit> lista = new ArrayList<HealthUnit>();
@@ -71,9 +70,7 @@ public class HealthUnitEdit implements Serializable {
 			facade = HealthWatcherFacade.getInstance();
 		} catch (Exception e) {
 			try {
-				facade.getfCid().getHealthUnitRecord().update(selectedHealthUnit);
-			} catch (RepositoryException e1) {
-				e1.printStackTrace();
+				facade.updateHealthUnit(selectedHealthUnit);
 			} catch (ObjectNotFoundException e1) {
 				e1.printStackTrace();
 			} catch (ObjectNotValidException e1) {

@@ -26,7 +26,6 @@ import br.cin.ufpe.healthwatcher.data.rdb.DiseaseTypeRepositoryRDB;
 import br.cin.ufpe.healthwatcher.data.rdb.EmployeeRepositoryRDB;
 import br.cin.ufpe.healthwatcher.data.rdb.HealthUnitRepositoryRDB;
 import br.cin.ufpe.healthwatcher.data.rdb.SpecialityRepositoryRDB;
-import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
 
 public aspect HWDataCollection {
 	
@@ -35,11 +34,6 @@ public aspect HWDataCollection {
 	}	
 
     declare soft: RepositoryException : execution(* *Record.*(..));
-    
-    //TODO:rever como todas as classes dentro do pacote model podem imlementar Serializable
-    declare parents : br.cin.ufpe.healthwatcher.model..* implements java.io.Serializable;
-    
-    //TODO: injetar aspecto para implementar equals e hashcode nos objetos anotados pela annotion @Entity
     
 	@SuppressWarnings("rawtypes")
 	protected Object getSystemRecord(Class type) {
@@ -104,9 +98,5 @@ public aspect HWDataCollection {
  	protected IPersistenceMechanism getPm() {
  		return HWPersistence.aspectOf().getPm();
  	}
-
- 	
 	
 }
-
-

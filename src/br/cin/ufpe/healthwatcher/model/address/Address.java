@@ -1,20 +1,11 @@
 package br.cin.ufpe.healthwatcher.model.address;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Address implements Serializable {
+public class Address {
 	private static final long serialVersionUID = 1L;
 	   
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer code;
 	
 	@Column(length = 100)

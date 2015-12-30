@@ -5,18 +5,14 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.persistence.*;
 
-@Entity
 public class Situation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	   
-	@Id
-	@GeneratedValue
 	private Integer code;
 
 	@Column(length = 100)
 	private String description;
 
-	// Getters and Setters
 	public Integer getCode() {
 		return this.code;
 	}

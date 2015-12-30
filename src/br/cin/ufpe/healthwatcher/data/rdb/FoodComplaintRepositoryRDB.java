@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 
 import lib.exceptions.ObjectAlreadyInsertedException;
@@ -20,7 +22,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
-import br.cin.ufpe.healthwatcher.business.employee.EmployeeLogin;
 import br.cin.ufpe.healthwatcher.data.IComplaintRepository;
 import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
 import br.cin.ufpe.healthwatcher.model.complaint.FoodComplaint;
@@ -44,31 +45,25 @@ public class FoodComplaintRepositoryRDB implements Serializable, IComplaintRepos
 		FoodComplaint foodComplaint = (FoodComplaint) complaint;
 		log.info("Registrando foodComplaint sobre " + foodComplaint.getDescricao());
 		HealthWatcherFacade fachada = null;
+		fachada = HealthWatcherFacade.getInstance();
+		
+		Employee e;
 		try {
-			fachada = HealthWatcherFacade.getInstance();
+			FacesContext fc = FacesContext.getCurrentInstance();
+			ExternalContext ec = fc.getExternalContext();
+			String login = (String) ec.getSessionMap().get("login");
+			e = fachada.searchEmployee(login);
+			foodComplaint.setAtendente(e);
 		} catch (Exception e1) {
 			e1.printStackTrace();
-		}
-		
-		if(fachada!=null){
-			EmployeeLogin employeeLogin = fachada.getfCid().getEmployeeLogin();
-			if(employeeLogin!=null && employeeLogin.isLogged()){
-				Employee e;
-				try {
-					e = fachada.searchEmployee(employeeLogin.getLogin());
-					foodComplaint.setAtendente(e);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
 		}
 		
 		EntityManager em;
 		try {
 			em = (EntityManager) this.mp.getCommunicationChannel();
 			em.persist(foodComplaint);
-		} catch (PersistenceMechanismException e) {
-			e.printStackTrace();
+		} catch (PersistenceMechanismException pme) {
+			pme.printStackTrace();
 		}
 
 		return foodComplaint.getCodigo();

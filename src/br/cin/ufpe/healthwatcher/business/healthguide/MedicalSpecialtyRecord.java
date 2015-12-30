@@ -1,7 +1,5 @@
 package br.cin.ufpe.healthwatcher.business.healthguide;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,6 @@ import javax.faces.context.FacesContext;
 
 import lib.exceptions.CommunicationException;
 import lib.exceptions.ObjectNotFoundException;
-import lib.exceptions.PersistenceMechanismException;
 import lib.exceptions.RepositoryException;
 import lib.exceptions.TransactionException;
 import lib.util.IteratorDsk;
@@ -23,7 +20,7 @@ import br.cin.ufpe.healthwatcher.model.healthguide.MedicalSpecialty;
 
 @ManagedBean
 @SessionScoped
-public class MedicalSpecialtyRecord implements Serializable {
+public class MedicalSpecialtyRecord {
 	
 	private static final long serialVersionUID = -4955973920455439632L;
 
@@ -72,23 +69,15 @@ public class MedicalSpecialtyRecord implements Serializable {
 			this.healthUnits = new ArrayList<HealthUnit>();
 			try {
 				if(facade==null){
-					try {
-						facade = HealthWatcherFacade.getInstance();
-					} catch (PersistenceMechanismException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					facade = HealthWatcherFacade.getInstance();
 				}				
-				IteratorDsk it = facade.getfCid().getHealthUnitRecord().searchHealthUnitsBySpeciality(this.selectedMedicalSpecialty.getCode());
+				IteratorDsk it = facade.searchHealthUnitsBySpeciality(this.selectedMedicalSpecialty.getCode());
 				while(it.hasNext()){
 					this.healthUnits.add((HealthUnit) it.next());
 				}
 			} catch (CommunicationException e) {
 				e.printStackTrace();
 			} catch (ObjectNotFoundException e) {
-				e.printStackTrace();
-			} catch (RepositoryException e) {
 				e.printStackTrace();
 			}
 		}
@@ -111,7 +100,7 @@ public class MedicalSpecialtyRecord implements Serializable {
 		}
 	}
 
-	public IteratorDsk getListaEspecialidade() throws RepositoryException,	ObjectNotFoundException, TransactionException {
+	public IteratorDsk getListaEspecialidade() throws ObjectNotFoundException {
 		return this.repEspecialidade.getSpecialityList();
 	}
 	

@@ -4,29 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
-/**
- * Entity implementation class for Entity: DiseaseType
- *
- */
-@Entity
-@NamedQueries({
-	@NamedQuery(name="allDiseases", query="SELECT d FROM DiseaseType d")
-})
 public class DiseaseType implements Serializable {
 	private static final long serialVersionUID = 1L;
 	   
-	@Id
-	@GeneratedValue
 	private Integer code;
 	
 	@Column(length = 100)

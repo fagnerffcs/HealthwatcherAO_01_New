@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.business.employee;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -16,9 +15,7 @@ import javax.servlet.http.Cookie;
 
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
-import lib.exceptions.PersistenceMechanismException;
 import lib.exceptions.RepositoryException;
-import lib.exceptions.TransactionException;
 import lib.exceptions.UpdateEntryException;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
@@ -79,14 +76,7 @@ public class EmployeeLogin implements Serializable {
             facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 									"Invalid password. Try again.", "Invalid Credentials!"));
 			return "";			
-		} catch(TransactionException te){
-			
-		} catch(PersistenceMechanismException pme){
-			
-		} catch(IOException ioe){
-			
 		}
-		return "";
 	}
 	
 	private void setCookie() {

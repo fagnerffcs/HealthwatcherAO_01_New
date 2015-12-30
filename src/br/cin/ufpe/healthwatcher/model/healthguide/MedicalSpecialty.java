@@ -5,14 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name="medicalSpecialtyByCode", query="SELECT m FROM MedicalSpecialty m WHERE m.code = :code"),
-	@NamedQuery(name="listAllMedicalSpecialties", query="SELECT m FROM MedicalSpecialty m")
-})
 public class MedicalSpecialty implements Serializable {
 	private static final long serialVersionUID = 1L;
 	   

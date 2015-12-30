@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.business.healthguide;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,26 +19,27 @@ import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
 @ManagedBean
 @SessionScoped
-public class HealthUnitRecord implements Serializable {
+public class HealthUnitRecord {
 
 	private static final long serialVersionUID = -4914101471627136696L;
 
 	private HealthUnit selectedHealthUnit;
 	private IHealthUnitRepository healthUnitRep;
 	private List<HealthUnit> healthUnits;
-	
+
 	public List<HealthUnit> getHealthUnits() {
 		return healthUnits;
 	}
 
-	public HealthUnitRecord(IHealthUnitRepository repUnidadeSaude){
+	public HealthUnitRecord(IHealthUnitRepository repUnidadeSaude) {
 		this.healthUnitRep = repUnidadeSaude;
 	}
 
 	public HealthUnit getSelectedHealthUnit() {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		Integer code = (Integer) facesContext.getExternalContext().getFlash().get("healthUnitCode");
-		if(code!=null){
+		Integer code = (Integer) facesContext.getExternalContext().getFlash()
+				.get("healthUnitCode");
+		if (code != null) {
 			try {
 				selectedHealthUnit = this.healthUnitRep.search(code);
 			} catch (ObjectNotFoundException | RepositoryException e) {
@@ -53,59 +53,60 @@ public class HealthUnitRecord implements Serializable {
 		this.selectedHealthUnit = selectedHealthUnit;
 	}
 
-	public void update(HealthUnit unit) throws RepositoryException,
-			ObjectNotFoundException, ObjectNotValidException {
+	public void update(HealthUnit unit) throws ObjectNotFoundException,
+			ObjectNotValidException {
 		healthUnitRep.update(unit);
 	}
 
 	public IteratorDsk searchSpecialitiesByHealthUnit(int code)
-			throws ObjectNotFoundException, RepositoryException {
+			throws ObjectNotFoundException {
 		HealthUnit us = healthUnitRep.search(code);
 		return new ConcreteIterator(us.getSpecialities());
 	}
 
 	public IteratorDsk searchHealthUnitsBySpeciality(int code)
-			throws ObjectNotFoundException, RepositoryException {
+			throws ObjectNotFoundException {
 		return healthUnitRep.getHealthUnitListBySpeciality(code);
 	}
 
-	public IteratorDsk getHealthUnitList() throws RepositoryException,
-			ObjectNotFoundException {
+	public IteratorDsk getHealthUnitList() throws ObjectNotFoundException {
 		return healthUnitRep.getHealthUnitList();
 	}
 
-	public IteratorDsk getPartialHealthUnitList() throws RepositoryException,
-			ObjectNotFoundException {
+	public IteratorDsk getPartialHealthUnitList()
+			throws ObjectNotFoundException {
 		return healthUnitRep.getPartialHealthUnitList();
 	}
 
-	public HealthUnit search(int healthUnitCode)
-			throws ObjectNotFoundException, RepositoryException {
+	public HealthUnit search(int healthUnitCode) throws ObjectNotFoundException {
 		return healthUnitRep.search(healthUnitCode);
 	}
-	
-	public List<HealthUnit> getSearchHealthUnitList(){
+
+	public List<HealthUnit> getSearchHealthUnitList() {
 		List<HealthUnit> lista = new ArrayList<HealthUnit>();
 		try {
 			IteratorDsk it = healthUnitRep.getHealthUnitList();
-			while(it.hasNext()){
+			while (it.hasNext()) {
 				lista.add((HealthUnit) it.next());
 			}
-		} catch (ObjectNotFoundException | RepositoryException | CommunicationException e) {
+		} catch (ObjectNotFoundException | RepositoryException
+				| CommunicationException e) {
 			e.printStackTrace();
 		}
 		return lista;
 	}
-	
-	public String searchSpecialties(){
+
+	public String searchSpecialties() {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		if(selectedHealthUnit!=null){
-			facesContext.getExternalContext().getFlash().put("healthUnitCode", this.selectedHealthUnit.getCode());
+		if (selectedHealthUnit != null) {
+			facesContext.getExternalContext().getFlash()
+					.put("healthUnitCode", this.selectedHealthUnit.getCode());
 			return "listSpecialtiesByHealthUnit?faces-redirect=true";
 		} else {
-            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Selecione um health unit.", "Erro ao selecionar."));
-            return "";
+			facesContext.addMessage(null, new FacesMessage(
+					FacesMessage.SEVERITY_ERROR, "Selecione um health unit.",
+					"Erro ao selecionar."));
+			return "";
 		}
 	}
 

@@ -1,7 +1,5 @@
 package br.cin.ufpe.healthwatcher.business.complaint;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,9 +10,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectNotFoundException;
-import lib.exceptions.PersistenceMechanismException;
-import lib.exceptions.RepositoryException;
-import lib.exceptions.TransactionException;
 import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.complaint.AnimalComplaint;
@@ -25,7 +20,7 @@ import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
 @ManagedBean
 @SessionScoped
-public class SearchComplaintRecord implements Serializable {
+public class SearchComplaintRecord {
 
 	private static final long serialVersionUID = -6887424307646650506L;
 	
@@ -83,7 +78,7 @@ public class SearchComplaintRecord implements Serializable {
 			if(facade==null){
 				facade = HealthWatcherFacade.getInstance();
 			}
-			IteratorDsk it = facade.getfCid().getComplaintList();
+			IteratorDsk it = facade.getComplaintList();
 			while(it.hasNext()){
 				Complaint c = (Complaint) it.next();
 				this.complaints.add(c);
@@ -104,11 +99,10 @@ public class SearchComplaintRecord implements Serializable {
 			if(facade==null){
 				facade = HealthWatcherFacade.getInstance();
 			}
-			this.complaint = facade.getfCid().searchComplaint(complaintCode);
+			this.complaint = facade.searchComplaint(complaintCode);
 			facesContext.getExternalContext().getFlash().put("complaint", complaint.getCodigo());
 			return "searchComplaintData?faces-redirect=true";			
-		} catch (RepositoryException | ObjectNotFoundException | IOException | PersistenceMechanismException
-				| TransactionException e) {
+		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
 		return "";
@@ -125,7 +119,7 @@ public class SearchComplaintRecord implements Serializable {
 				if(code!=null){
 					this.complaint = facade.searchComplaint(code);
 				}
-			} catch (RepositoryException | ObjectNotFoundException | PersistenceMechanismException | IOException | TransactionException e) {
+			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
 		}

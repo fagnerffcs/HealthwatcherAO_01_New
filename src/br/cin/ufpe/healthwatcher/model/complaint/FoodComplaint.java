@@ -2,26 +2,11 @@ package br.cin.ufpe.healthwatcher.model.complaint;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
 
-/**
- * Entity implementation class for Entity: FoodComplaint
- *
- */
-@NamedQueries({
-	@NamedQuery(name="foodComplaintByCode", query="SELECT f FROM FoodComplaint f WHERE f.code = :code"),
-	@NamedQuery(name="allFoodComplaints", query="SELECT f FROM FoodComplaint f"),
-	@NamedQuery(name="allFoodComplaintsBySituation", query="SELECT f FROM FoodComplaint f WHERE f.situacao = :situacao"),
-})
 public class FoodComplaint extends Complaint implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -30,7 +15,6 @@ public class FoodComplaint extends Complaint implements Serializable {
 	private Integer qtdeInternacoes;
 	private Integer qtdeObitos;
 	
-	// TODO: Verificar se aqui nao deve ser usada HealthUnit.
 	@NotNull
 	@Column(length = 100)
 	private String localAtendimento;
@@ -39,8 +23,6 @@ public class FoodComplaint extends Complaint implements Serializable {
 	@Column(length = 100)
 	private String refeicaoSuspeita;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "code")
 	private Address enderecoDoente;
 
 	@Column(name="nome_vitima")
