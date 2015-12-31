@@ -104,7 +104,7 @@ public class AnimalComplaintRepositoryRDB implements Serializable, IComplaintRep
 		} catch (PersistenceMechanismException e) {
 			e.printStackTrace();
 		}
-		return animalComplaint.getCodigo();
+		return animalComplaint.getCode();
 	}
 
 	@Override

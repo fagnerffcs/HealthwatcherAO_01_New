@@ -1,23 +1,16 @@
 package br.cin.ufpe.healthwatcher.business.complaint;
 
-import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectAlreadyInsertedException;
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
 import lib.exceptions.RepositoryException;
-import lib.exceptions.TransactionException;
 import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.data.IComplaintRepository;
 import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
 
-@ManagedBean
-@ViewScoped
-public class ComplaintRecord implements Serializable {
+public class ComplaintRecord {
 
 	private static final long serialVersionUID = -6887424307646650506L;
 	private IComplaintRepository complaintRep;
@@ -33,7 +26,7 @@ public class ComplaintRecord implements Serializable {
 
 	public int insert(Complaint complaint)
 			throws ObjectAlreadyInsertedException, ObjectNotValidException {
-		if (complaintRep.exists(complaint.getCodigo())) {
+		if (complaint.getCode()!=null && complaintRep.exists(complaint.getCode())) {
 			throw new ObjectAlreadyInsertedException(
 					"Complaint code already registered");
 		}

@@ -7,8 +7,11 @@ import lib.exceptions.ObjectAlreadyInsertedException;
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
 import lib.util.IteratorDsk;
+import br.cin.ufpe.healthwatcher.business.complaint.AnimalComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.ComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.DiseaseRecord;
+import br.cin.ufpe.healthwatcher.business.complaint.FoodComplaintRecord;
+import br.cin.ufpe.healthwatcher.business.complaint.SpecialComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.employee.EmployeeRecord;
 import br.cin.ufpe.healthwatcher.business.healthguide.HealthUnitRecord;
 import br.cin.ufpe.healthwatcher.business.healthguide.MedicalSpecialtyRecord;
@@ -24,6 +27,12 @@ public class HealthWatcherFacade implements IFacade {
 	private static HealthWatcherFacade singleton; //padrao singleton
 	
 	private ComplaintRecord complaintRecord;
+	
+	private AnimalComplaintRecord animalComplaintRecord;
+	
+	private FoodComplaintRecord foodComplaintRecord;
+	
+	private SpecialComplaintRecord specialComplaintRecord;
 
 	private HealthUnitRecord healthUnitRecord;
 
@@ -31,10 +40,78 @@ public class HealthWatcherFacade implements IFacade {
 
 	private DiseaseRecord diseaseRecord;
 
-	private EmployeeRecord employeeRecord;	
+	private EmployeeRecord employeeRecord;
 	
-	private HealthWatcherFacade(){
+	public ComplaintRecord getComplaintRecord() {
+		return complaintRecord;
+	}
+
+	public void setComplaintRecord(ComplaintRecord complaintRecord) {
+		this.complaintRecord = complaintRecord;
+	}
+
+	public AnimalComplaintRecord getAnimalComplaintRecord() {
+		return animalComplaintRecord;
+	}
+
+	public void setAnimalComplaintRecord(AnimalComplaintRecord animalComplaintRecord) {
+		this.animalComplaintRecord = animalComplaintRecord;
+	}
+
+	public FoodComplaintRecord getFoodComplaintRecord() {
+		return foodComplaintRecord;
+	}
+
+	public void setFoodComplaintRecord(FoodComplaintRecord foodComplaintRecord) {
+		this.foodComplaintRecord = foodComplaintRecord;
+	}
+
+	public SpecialComplaintRecord getSpecialComplaintRecord() {
+		return specialComplaintRecord;
+	}
+
+	public void setSpecialComplaintRecord(
+			SpecialComplaintRecord specialComplaintRecord) {
+		this.specialComplaintRecord = specialComplaintRecord;
+	}	
+	
+	public HealthUnitRecord getHealthUnitRecord() {
+		return healthUnitRecord;
+	}
+
+	public void setHealthUnitRecord(HealthUnitRecord healthUnitRecord) {
+		this.healthUnitRecord = healthUnitRecord;
+	}
+
+	public MedicalSpecialtyRecord getSpecialityRecord() {
+		return specialityRecord;
+	}
+
+	public void setSpecialityRecord(MedicalSpecialtyRecord specialityRecord) {
+		this.specialityRecord = specialityRecord;
+	}
+
+	public DiseaseRecord getDiseaseRecord() {
+		return diseaseRecord;
+	}
+
+	public void setDiseaseRecord(DiseaseRecord diseaseRecord) {
+		this.diseaseRecord = diseaseRecord;
+	}
+
+	public EmployeeRecord getEmployeeRecord() {
+		return employeeRecord;
+	}
+
+	public void setEmployeeRecord(EmployeeRecord employeeRecord) {
+		this.employeeRecord = employeeRecord;
+	}
+
+	public HealthWatcherFacade(){
 		this.complaintRecord = new ComplaintRecord(null);
+		this.animalComplaintRecord = new AnimalComplaintRecord();
+		this.foodComplaintRecord = new FoodComplaintRecord();
+		this.specialComplaintRecord = new SpecialComplaintRecord();
 		this.healthUnitRecord = new HealthUnitRecord(null);
 		this.specialityRecord = new MedicalSpecialtyRecord(null);
 		this.diseaseRecord = new DiseaseRecord(null);

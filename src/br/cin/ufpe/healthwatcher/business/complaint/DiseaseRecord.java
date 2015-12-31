@@ -3,8 +3,6 @@ package br.cin.ufpe.healthwatcher.business.complaint;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.CommunicationException;
@@ -14,8 +12,6 @@ import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.data.IDiseaseRepository;
 import br.cin.ufpe.healthwatcher.model.complaint.DiseaseType;
 
-@ManagedBean
-@SessionScoped
 public class DiseaseRecord {
 
 	private static final long serialVersionUID = -4955973920455439632L;

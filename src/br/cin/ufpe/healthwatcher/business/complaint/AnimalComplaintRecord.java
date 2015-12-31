@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
@@ -14,8 +12,6 @@ import br.cin.ufpe.healthwatcher.model.complaint.AnimalComplaint;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
-@ManagedBean
-@ViewScoped
 public class AnimalComplaintRecord {
 	
 	private static final long serialVersionUID = 7502327389893929089L;

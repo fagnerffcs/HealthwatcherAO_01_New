@@ -2,16 +2,11 @@ package br.cin.ufpe.healthwatcher.model.complaint;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
@@ -22,10 +17,8 @@ import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 public abstract class Complaint {
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue
-	private int code;
-
+	private Integer code;
+	
 	@NotNull
 	@Column(length = 100)
 	private String solicitante;
@@ -48,14 +41,10 @@ public abstract class Complaint {
 	@Enumerated
 	private Situacao situacao;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataParecer;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataQueixa;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="enderecosolicitante_code")
 	private Address enderecoSolicitante;
 
 	private long timestamp; // TODO para tratamento de concorrencia (scbs)
@@ -69,7 +58,6 @@ public abstract class Complaint {
 			Address enderecoSolicitante, long timestamp) {
 
 		//Numero fica vazio por enquanto - no Repositorio ele eh inicializado
-		this.code = 0;
 		this.solicitante = solicitante;
 		this.descricao = descricao;
 		this.observacao = observacao;
@@ -82,20 +70,20 @@ public abstract class Complaint {
 		this.timestamp = timestamp;
 	}
 
+	public Integer getCode() {
+		return code;
+	}
+
+	public void setCode(Integer code) {
+		this.code = code;
+	}
+
 	public Employee getAtendente() {
 		return atendente;
 	}
 
 	public void setAtendente(Employee atendente) {
 		this.atendente = atendente;
-	}
-
-	public int getCodigo() {
-		return code;
-	}
-
-	public void setCodigo(int codigo) {
-		this.code = codigo;
 	}
 
 	public Date getDataParecer() {

@@ -28,13 +28,13 @@ public class ComplaintRepositoryArray implements IComplaintRepository {
 				}
 				this.vetor[indice] = q;
 				indice++;
-				return vetor[indice - 1].getCodigo();
+				return vetor[indice - 1].getCode();
 			}
 		}
 
 		public void update(Complaint q) throws RepositoryException, ObjectNotFoundException {
 			synchronized (this) {
-				int i = getIndex(q.getCodigo());
+				int i = getIndex(q.getCode());
 				if (i == indice) {
 					throw new ObjectNotFoundException("Complaint not found");
 				} else {
@@ -49,7 +49,7 @@ public class ComplaintRepositoryArray implements IComplaintRepository {
 				boolean flag = false;
 				int i = 0;
 				while ((!flag) && (i < indice)) {
-					temp = vetor[i].getCodigo();
+					temp = vetor[i].getCode();
 					if (temp == code) {
 						flag = true;
 					} else {

@@ -37,7 +37,7 @@ public class ComplaintConverter implements Converter {
 	public String getAsString(FacesContext context, UIComponent component,	Object value) {
 		if(value instanceof Complaint){
 			Complaint c = (Complaint) value;
-			return String.valueOf(c.getCodigo());
+			return String.valueOf(c.getCode());
 		}
 		return null;
 	}

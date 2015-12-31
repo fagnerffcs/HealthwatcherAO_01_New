@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectNotFoundException;
@@ -18,8 +16,6 @@ import br.cin.ufpe.healthwatcher.model.complaint.FoodComplaint;
 import br.cin.ufpe.healthwatcher.model.complaint.SpecialComplaint;
 import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
-@ManagedBean
-@SessionScoped
 public class SearchComplaintRecord {
 
 	private static final long serialVersionUID = -6887424307646650506L;
@@ -100,7 +96,7 @@ public class SearchComplaintRecord {
 				facade = HealthWatcherFacade.getInstance();
 			}
 			this.complaint = facade.searchComplaint(complaintCode);
-			facesContext.getExternalContext().getFlash().put("complaint", complaint.getCodigo());
+			facesContext.getExternalContext().getFlash().put("complaint", complaint.getCode());
 			return "searchComplaintData?faces-redirect=true";			
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
@@ -146,7 +142,7 @@ public class SearchComplaintRecord {
 			if(facade==null){
 				facade = HealthWatcherFacade.getInstance();
 			}
-			facesContext.getExternalContext().getFlash().put("complaintCode", complaint.getCodigo());
+			facesContext.getExternalContext().getFlash().put("complaintCode", complaint.getCode());
 			return "updateSearchComplaint?faces-redirect=true";			
 		} catch (Exception e) {
 			e.printStackTrace();

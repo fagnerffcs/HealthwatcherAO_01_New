@@ -66,7 +66,7 @@ public class FoodComplaintRepositoryRDB implements Serializable, IComplaintRepos
 			pme.printStackTrace();
 		}
 
-		return foodComplaint.getCodigo();
+		return foodComplaint.getCode();
 	}
 
 	@Override

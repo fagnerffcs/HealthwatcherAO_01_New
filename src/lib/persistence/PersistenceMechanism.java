@@ -22,8 +22,12 @@ public class PersistenceMechanism implements IPersistenceMechanism {
 	
 	@Override
 	public void connect() throws PersistenceMechanismException {
-		this.emf = Persistence.createEntityManagerFactory("healthwatcher");
-		this.em = this.emf.createEntityManager();
+		try{
+			this.emf = Persistence.createEntityManagerFactory("healthwatcher");
+			this.em = this.emf.createEntityManager();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override

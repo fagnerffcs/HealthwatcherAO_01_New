@@ -1,13 +1,12 @@
 package br.cin.ufpe.healthwatcher.model.complaint;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 
 import br.cin.ufpe.healthwatcher.model.address.Address;
 
-public class AnimalComplaint extends Complaint implements Serializable {
+public class AnimalComplaint extends Complaint {
 	private static final long serialVersionUID = 1L;
 	
 	private Short animalQuantity;

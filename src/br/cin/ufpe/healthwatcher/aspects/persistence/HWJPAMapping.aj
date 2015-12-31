@@ -25,21 +25,22 @@ public aspect HWJPAMapping {
 	@ManyToOne(cascade=CascadeType.ALL);
 	
 	//@JoinColumn mapping
-	declare @field : ((br.cin.ufpe.healthwatcher.model.address.Address 
-			   br.cin.ufpe.healthwatcher.model.complaint.Complaint+.endereco*) ||
-			  (br.cin.ufpe.healthwatcher.model.address.Address 
-			   br.cin.ufpe.healthwatcher.model.complaint.AnimalComplaint.occurenceLocalAddress)
-			  ) && 
-			  !(br.cin.ufpe.healthwatcher.model.address.Address 
-				br.cin.ufpe.healthwatcher.model.complaint.Complaint.enderecoSolicitante):
-	@JoinColumn(name = "code");
+	declare @field : (br.cin.ufpe.healthwatcher.model.address.Address 
+					  br.cin.ufpe.healthwatcher.model.complaint.AnimalComplaint.occurenceLocalAddress) ||
+					 (br.cin.ufpe.healthwatcher.model.address.Address 
+					  br.cin.ufpe.healthwatcher.model.complaint.SpecialComplaint.enderecoOcorrencia) ||
+					 (br.cin.ufpe.healthwatcher.model.address.Address 
+					  br.cin.ufpe.healthwatcher.model.complaint.FoodComplaint.enderecoDoente): 
+					  @JoinColumn(name = "addressCode");
 			  
 	declare @field : (br.cin.ufpe.healthwatcher.model.address.Address 
 					   br.cin.ufpe.healthwatcher.model.complaint.Complaint.enderecoSolicitante):
 	@JoinColumn(name = "enderecoSolicitante_code");
 	
 	//@Temporal mapping
-	declare @field : private java.util.Date br.cin.ufpe.healthwatcher.model..*.* : @Temporal(TemporalType.DATE);
+	declare @field : private java.util.Date br.cin.ufpe.healthwatcher.model.complaint.AnimalComplaint.* : @Temporal(TemporalType.DATE);
+	
+	declare @field : private java.util.Date br.cin.ufpe.healthwatcher.model.complaint.Complaint.*: @Temporal(TemporalType.TIMESTAMP);
 	
 	//@Id mapping
 	declare @field : private Integer br.cin.ufpe.healthwatcher.model..*.code :

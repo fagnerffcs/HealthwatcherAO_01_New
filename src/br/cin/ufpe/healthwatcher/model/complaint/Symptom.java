@@ -12,7 +12,6 @@ public class Symptom implements Serializable {
 	@Column(length = 100)
 	private String description;
 
-
 	// Getters and Setters
 	public Integer getCode() {
 		return this.code;

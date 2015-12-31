@@ -1,12 +1,9 @@
 package br.cin.ufpe.healthwatcher.business.complaint;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
@@ -15,9 +12,7 @@ import br.cin.ufpe.healthwatcher.model.complaint.FoodComplaint;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
-@ManagedBean
-@ViewScoped
-public class FoodComplaintRecord implements Serializable {
+public class FoodComplaintRecord {
 	
 	private static final long serialVersionUID = -396582813699440065L;
 

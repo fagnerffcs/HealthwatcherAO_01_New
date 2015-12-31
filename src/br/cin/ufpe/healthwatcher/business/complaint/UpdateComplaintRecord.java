@@ -2,8 +2,6 @@ package br.cin.ufpe.healthwatcher.business.complaint;
 
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectNotFoundException;
@@ -16,8 +14,6 @@ import br.cin.ufpe.healthwatcher.model.complaint.FoodComplaint;
 import br.cin.ufpe.healthwatcher.model.complaint.SpecialComplaint;
 import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 
-@ManagedBean
-@ViewScoped
 public class UpdateComplaintRecord {
 
 	private static final long serialVersionUID = -6887424307646650506L;
@@ -33,7 +29,7 @@ public class UpdateComplaintRecord {
 			ObjectNotFoundException, ObjectNotValidException {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		facesContext.getExternalContext().getFlash()
-				.put("complaintCode", complaint.getCodigo());
+				.put("complaintCode", complaint.getCode());
 		try {
 			if (this.facade == null) {
 				this.facade = HealthWatcherFacade.getInstance();

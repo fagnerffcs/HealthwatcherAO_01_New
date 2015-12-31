@@ -105,7 +105,7 @@ public class SpecialComplaintRepositoryRDB implements Serializable, IComplaintRe
 		} catch (PersistenceMechanismException e) {
 			e.printStackTrace();
 		}
-		return specialComplaint.getCodigo();
+		return specialComplaint.getCode();
 	}
 
 	@Override
