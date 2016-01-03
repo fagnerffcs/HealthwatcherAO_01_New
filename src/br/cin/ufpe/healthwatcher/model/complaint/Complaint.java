@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
@@ -34,8 +32,6 @@ public abstract class Complaint {
 	@Column(length = 100)
 	private String email;
 
-	@ManyToOne(optional=true)
-	@JoinColumn(name = "login", nullable=true)
 	private Employee atendente;
 
 	@Enumerated

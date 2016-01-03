@@ -1,11 +1,7 @@
 package br.cin.ufpe.healthwatcher.business.employee;
 
-import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectNotFoundException;
@@ -16,9 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
-@ManagedBean
-@SessionScoped
-public class EmployeeEdit implements Serializable {
+public class EmployeeEdit {
 
 	private static final long serialVersionUID = -3894035124921216300L;
 

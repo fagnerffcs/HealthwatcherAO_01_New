@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.data.rdb;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +16,10 @@ import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.data.IHealthUnitRepository;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
-public class HealthUnitRepositoryRDB implements Serializable, IHealthUnitRepository {
+public class HealthUnitRepositoryRDB implements IHealthUnitRepository {
 	
-	private static final long serialVersionUID = 349734549768639456L;
+	private static final long serialVersionUID = 1391064984463052927L;
+	
 	private IPersistenceMechanism mp;
 
 	public HealthUnitRepositoryRDB(PersistenceMechanism mp) {

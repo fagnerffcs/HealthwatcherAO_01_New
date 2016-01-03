@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.data.rdb;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +16,10 @@ import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.data.IDiseaseRepository;
 import br.cin.ufpe.healthwatcher.model.complaint.DiseaseType;
 
-public class DiseaseTypeRepositoryRDB implements Serializable, IDiseaseRepository {
+public class DiseaseTypeRepositoryRDB implements IDiseaseRepository {
 
 	private static final long serialVersionUID = 2946254639830068002L;
+	
 	private IPersistenceMechanism mp;
 	
 	public DiseaseTypeRepositoryRDB(PersistenceMechanism mp) {

@@ -1,33 +1,23 @@
 package br.cin.ufpe.healthwatcher.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
-@Entity
 public class Credential {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private static final long serialVersionUID = -7292496503968462234L;
+
+	private Integer code;
 	
 	private String role;
 	
-	@ManyToOne
-	@JoinColumn(name="employee_id")
 	private Employee employee;
 
-	public int getId() {
-		return id;
+	public Integer getCode() {
+		return code;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCode(Integer code) {
+		this.code = code;
 	}
 
 	public String getRole() {

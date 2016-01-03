@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.CommunicationException;
@@ -17,8 +15,6 @@ import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.data.IHealthUnitRepository;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
-@ManagedBean
-@SessionScoped
 public class HealthUnitRecord {
 
 	private static final long serialVersionUID = -4914101471627136696L;

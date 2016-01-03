@@ -1,12 +1,6 @@
 package br.cin.ufpe.healthwatcher.aspects.exceptionHandling;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import lib.exceptions.RepositoryException;
 
 /**
  * This aspect handles repository exceptions in the servlets
@@ -16,6 +10,7 @@ public aspect HWPersistenceExceptionHandler {
 	// Makes soft all IO exceptions raised in this aspect
 	declare soft : IOException : within(HWPersistenceExceptionHandler+);
 	
+	/*
 	void around(HttpServletResponse response) : 
 		execution(* HWServlet+.doGet(HttpServletRequest, HttpServletResponse)) &&
 		args(.., response) {
@@ -30,4 +25,5 @@ public aspect HWPersistenceExceptionHandler {
             out.println("<P> " + e.getMessage() + " </P>");
 		}
 	}
+	*/
 }

@@ -1,12 +1,9 @@
 package br.cin.ufpe.healthwatcher.business.healthguide;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.ObjectNotFoundException;
@@ -15,9 +12,7 @@ import lib.util.IteratorDsk;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
-@ManagedBean
-@ViewScoped
-public class HealthUnitEdit implements Serializable {
+public class HealthUnitEdit {
 
 	private static final long serialVersionUID = -4914101471627136696L;
 	

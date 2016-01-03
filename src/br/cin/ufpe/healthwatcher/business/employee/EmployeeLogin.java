@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.business.employee;
 
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -8,8 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Cookie;
 
@@ -20,9 +17,7 @@ import lib.exceptions.UpdateEntryException;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
-@ManagedBean(name="employeeLogin")
-@SessionScoped
-public class EmployeeLogin implements Serializable {
+public class EmployeeLogin {
 
 	private static final long serialVersionUID = -8729930869176381346L;
 

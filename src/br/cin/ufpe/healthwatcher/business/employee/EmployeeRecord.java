@@ -1,25 +1,18 @@
 package br.cin.ufpe.healthwatcher.business.employee;
 
 
-import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 import lib.exceptions.ObjectAlreadyInsertedException;
 import lib.exceptions.ObjectNotFoundException;
 import lib.exceptions.ObjectNotValidException;
-import lib.exceptions.RepositoryException;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.cin.ufpe.healthwatcher.data.IEmployeeRepository;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
-@ManagedBean
-@ViewScoped
-public class EmployeeRecord implements Serializable {
+public class EmployeeRecord {
 
 	private static final long serialVersionUID = -3894035124921216300L;
 

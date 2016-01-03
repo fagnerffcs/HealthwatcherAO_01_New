@@ -10,6 +10,8 @@ import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
 public class HealthUnitRepositoryArray implements IHealthUnitRepository {
 
+	private static final long serialVersionUID = -5937988022042127243L;
+
 	@Override
 	public void insert(HealthUnit us) throws ObjectNotValidException,
 			ObjectAlreadyInsertedException, ObjectNotValidException,

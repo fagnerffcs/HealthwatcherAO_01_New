@@ -1,12 +1,9 @@
 package br.cin.ufpe.healthwatcher.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class Authorization {
 	
-	@Id
+	private static final long serialVersionUID = -8169612714939833274L;
+	
 	private String name;
 
 	public String getName() {

@@ -1,6 +1,5 @@
 package br.cin.ufpe.healthwatcher.data.rdb;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +28,7 @@ import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
 import br.cin.ufpe.healthwatcher.model.enumTypes.Situacao;
 import br.cin.ufpe.healthwatcher.util.JPAUtil;
 
-public class AnimalComplaintRepositoryRDB implements Serializable, IComplaintRepository {
+public class AnimalComplaintRepositoryRDB implements IComplaintRepository {
 
 	private static final long serialVersionUID = 4576246922015958533L;
 

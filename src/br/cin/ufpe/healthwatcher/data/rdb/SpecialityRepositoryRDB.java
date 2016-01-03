@@ -18,6 +18,8 @@ import br.cin.ufpe.healthwatcher.model.healthguide.MedicalSpecialty;
 
 public class SpecialityRepositoryRDB implements ISpecialityRepository {
 
+	private static final long serialVersionUID = 5275690636270769965L;
+
 	private IPersistenceMechanism pm;
 	
 	public SpecialityRepositoryRDB(PersistenceMechanism pm) {

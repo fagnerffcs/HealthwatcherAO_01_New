@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import lib.exceptions.CommunicationException;
@@ -18,8 +16,6 @@ import br.cin.ufpe.healthwatcher.data.ISpecialityRepository;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 import br.cin.ufpe.healthwatcher.model.healthguide.MedicalSpecialty;
 
-@ManagedBean
-@SessionScoped
 public class MedicalSpecialtyRecord {
 	
 	private static final long serialVersionUID = -4955973920455439632L;

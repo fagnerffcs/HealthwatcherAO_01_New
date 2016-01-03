@@ -10,6 +10,8 @@ import br.cin.ufpe.healthwatcher.model.complaint.DiseaseType;
 
 public class DiseaseTypeRepositoryArray implements IDiseaseRepository {
 
+	private static final long serialVersionUID = -7436539510071745738L;
+
 	@Override
 	public void insert(DiseaseType td) throws ObjectNotValidException,
 			ObjectAlreadyInsertedException, ObjectNotValidException,

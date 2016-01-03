@@ -9,6 +9,8 @@ import br.cin.ufpe.healthwatcher.model.complaint.Complaint;
 
 public class ComplaintRepositoryArray implements IComplaintRepository {
 	
+	private static final long serialVersionUID = -4841843972592572265L;
+
 	private Complaint[] vetor;
 
 	private int indice;

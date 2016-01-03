@@ -1,19 +1,15 @@
 package br.cin.ufpe.healthwatcher.model.employee;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
-import javax.persistence.Id;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-public class Employee implements Serializable {
+public class Employee {
 	private static final long serialVersionUID = 1L;
 
 	@Column(length = 100)
 	private String name;   
 
-	@Id
 	@Column(length = 100)
 	private String login;
 

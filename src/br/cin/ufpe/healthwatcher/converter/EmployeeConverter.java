@@ -1,9 +1,5 @@
 package br.cin.ufpe.healthwatcher.converter;
 
-import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -13,9 +9,7 @@ import lib.exceptions.ObjectNotFoundException;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
-@ManagedBean
-@SessionScoped
-public class EmployeeConverter implements Converter, Serializable {
+public class EmployeeConverter implements Converter {
 
 	private static final long serialVersionUID = 391558762793887877L;
 	

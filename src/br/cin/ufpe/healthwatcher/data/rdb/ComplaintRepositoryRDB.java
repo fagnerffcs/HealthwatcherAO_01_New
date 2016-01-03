@@ -20,6 +20,8 @@ import br.cin.ufpe.healthwatcher.model.complaint.SpecialComplaint;
 
 public class ComplaintRepositoryRDB implements IComplaintRepository {
 	
+	private static final long serialVersionUID = 5714871827637424493L;
+	
 	private IPersistenceMechanism mp;
 	private FoodComplaintRepositoryRDB foodRepositoryRDB;
 	private AnimalComplaintRepositoryRDB animalRepositoryRDB;

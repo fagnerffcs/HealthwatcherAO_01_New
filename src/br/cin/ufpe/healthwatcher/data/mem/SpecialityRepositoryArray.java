@@ -10,6 +10,8 @@ import br.cin.ufpe.healthwatcher.model.healthguide.MedicalSpecialty;
 
 public class SpecialityRepositoryArray implements ISpecialityRepository {
 
+	private static final long serialVersionUID = 4366687131149267876L;
+
 	@Override
 	public void insert(MedicalSpecialty esp) throws ObjectNotValidException,
 			ObjectAlreadyInsertedException, ObjectNotValidException,

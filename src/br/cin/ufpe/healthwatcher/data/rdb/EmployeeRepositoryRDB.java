@@ -1,7 +1,5 @@
 package br.cin.ufpe.healthwatcher.data.rdb;
 
-import java.io.Serializable;
-
 import javax.persistence.EntityManager;
 
 import lib.exceptions.ObjectAlreadyInsertedException;
@@ -18,9 +16,9 @@ import org.slf4j.LoggerFactory;
 import br.cin.ufpe.healthwatcher.data.IEmployeeRepository;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
-public class EmployeeRepositoryRDB implements Serializable, IEmployeeRepository {
+public class EmployeeRepositoryRDB implements IEmployeeRepository {
 
-	private static final long serialVersionUID = -1140679191313821439L;
+	private static final long serialVersionUID = -1642367800264503716L;
 
 	private static Logger log = LoggerFactory.getLogger(EmployeeRepositoryRDB.class);
 	

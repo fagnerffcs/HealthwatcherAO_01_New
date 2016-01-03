@@ -6,6 +6,8 @@ import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
 public class EmployeeRepositoryArray implements IEmployeeRepository {
 	
+	private static final long serialVersionUID = -2537462608051443877L;
+
 	private Employee[] vector;
 
 	private int index;

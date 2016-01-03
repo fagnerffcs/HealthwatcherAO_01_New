@@ -1,11 +1,13 @@
 package br.cin.ufpe.healthwatcher.model.address;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.validation.constraints.NotNull;
 
 public class Address {
 	private static final long serialVersionUID = 1L;
 	   
+	@GeneratedValue
 	private Integer code;
 	
 	@Column(length = 100)

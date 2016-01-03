@@ -2,6 +2,7 @@ package lib.concurrency;
 
 import java.util.HashMap;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class ConcurrencyManager {
 
 	private final static String ERROR_MESSAGE = "Invallid Execution --- possible programming error at aspects.concurrencyControl.util.ConcurrencyManager";
