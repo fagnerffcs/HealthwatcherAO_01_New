@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
 	<persistence-unit name="healthwatcher" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.cin.ufpe.healthwatcher.model.address.Address</class>
@@ -16,7 +17,7 @@
 		<class>br.cin.ufpe.healthwatcher.model.complaint.SpecialComplaint</class>
 		<class>br.cin.ufpe.healthwatcher.model.complaint.Symptom</class>
         
-        <!-- POSTGRES--> 
+        <!-- POSTGRES 
         <properties>
             <property name="hibernate.connection.username" value="healthwatcher" />
             <property name="hibernate.connection.password" value="healthwatcher" />
@@ -29,9 +30,9 @@
             <property name="javax.persistence.sharedCache.mode" value="ALL"/>
             <property name="format_sql" value="true" />
         </properties>
+        -->
         
-        
-        <!-- H2 CONF 
+        <!-- H2 CONF --> 
         <properties>
             <property name="hibernate.archive.autodetection" value="class" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
@@ -42,7 +43,6 @@
             <property name="hibernate.flushMode" value="FLUSH_AUTO" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>
-        -->
         		
 	</persistence-unit>
 </persistence>

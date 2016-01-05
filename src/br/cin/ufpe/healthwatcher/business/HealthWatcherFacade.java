@@ -8,6 +8,7 @@ import br.cin.ufpe.healthwatcher.business.complaint.AnimalComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.ComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.DiseaseRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.FoodComplaintRecord;
+import br.cin.ufpe.healthwatcher.business.complaint.SearchComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.SpecialComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.employee.EmployeeRecord;
 import br.cin.ufpe.healthwatcher.business.healthguide.HealthUnitRecord;
@@ -36,6 +37,8 @@ public class HealthWatcherFacade implements IFacade {
 	private DiseaseRecord diseaseRecord;
 
 	private EmployeeRecord employeeRecord;
+	
+	private SearchComplaintRecord searchComplaintRecord;
 
 	public ComplaintRecord getComplaintRecord() {
 		return complaintRecord;
@@ -103,6 +106,14 @@ public class HealthWatcherFacade implements IFacade {
 		this.employeeRecord = employeeRecord;
 	}
 
+	public SearchComplaintRecord getSearchComplaintRecord() {
+		return searchComplaintRecord;
+	}
+
+	public void setSearchComplaintRecord(SearchComplaintRecord searchComplaintRecord) {
+		this.searchComplaintRecord = searchComplaintRecord;
+	}
+
 	public HealthWatcherFacade() {
 		this.complaintRecord = new ComplaintRecord(null);
 		this.animalComplaintRecord = new AnimalComplaintRecord();
@@ -112,6 +123,7 @@ public class HealthWatcherFacade implements IFacade {
 		this.specialityRecord = new MedicalSpecialtyRecord(null);
 		this.diseaseRecord = new DiseaseRecord(null);
 		this.employeeRecord = new EmployeeRecord(null);
+		this.searchComplaintRecord = new SearchComplaintRecord();
 	}
 
 	public synchronized static HealthWatcherFacade getInstance() {

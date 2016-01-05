@@ -5,7 +5,6 @@ import javax.persistence.Column;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Employee {
-	private static final long serialVersionUID = 1L;
 
 	@Column(length = 100)
 	private String name;   

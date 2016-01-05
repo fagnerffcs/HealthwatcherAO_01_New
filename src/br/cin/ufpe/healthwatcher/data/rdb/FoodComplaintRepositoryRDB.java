@@ -51,8 +51,10 @@ public class FoodComplaintRepositoryRDB implements IComplaintRepository {
 			FacesContext fc = FacesContext.getCurrentInstance();
 			ExternalContext ec = fc.getExternalContext();
 			String login = (String) ec.getSessionMap().get("login");
-			e = fachada.searchEmployee(login);
-			foodComplaint.setAtendente(e);
+			if(login!=null){
+				e = fachada.searchEmployee(login);
+				foodComplaint.setAtendente(e);
+			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

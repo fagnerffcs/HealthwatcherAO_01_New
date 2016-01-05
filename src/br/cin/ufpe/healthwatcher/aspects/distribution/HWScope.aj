@@ -17,11 +17,11 @@ public aspect HWScope {
 	declare @type : br.cin.ufpe.healthwatcher.business.HealthWatcherFacade : @ManagedBean(name="facade");
 	
 	//@RequestScoped mapping
-	declare @type : br.cin.ufpe.healthwatcher.converter.* : @RequestScoped;
+	declare @type : br.cin.ufpe.healthwatcher.business.complaint.* ||
+					br.cin.ufpe.healthwatcher.converter.* : @RequestScoped;
 	
 	//@ViewScoped mapping
-	declare @type : br.cin.ufpe.healthwatcher.business.complaint.* ||
-					br.cin.ufpe.healthwatcher.business.healthguide.* ||
+	declare @type : br.cin.ufpe.healthwatcher.business.healthguide.* ||
 					(br.cin.ufpe.healthwatcher.business.employee.* && 
 					 !br.cin.ufpe.healthwatcher.business.employee.EmployeeLogin)
 					: @ViewScoped;
