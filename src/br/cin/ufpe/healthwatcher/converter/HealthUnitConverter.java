@@ -2,13 +2,12 @@ package br.cin.ufpe.healthwatcher.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 
 import lib.exceptions.ObjectNotFoundException;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit;
 
-public class HealthUnitConverter implements Converter {
+public class HealthUnitConverter {
 
 	private static final long serialVersionUID = -2806869619432072259L;
 

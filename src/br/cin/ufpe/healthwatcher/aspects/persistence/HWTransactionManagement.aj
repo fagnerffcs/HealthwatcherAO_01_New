@@ -5,9 +5,10 @@ import lib.persistence.IPersistenceMechanism;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 
 public aspect HWTransactionManagement {
-    pointcut transactionalMethods(): execution(* HealthWatcherFacade.insert*(..)) || 
-    								 execution(* HealthWatcherFacade.update*(..)) ||
-    								 execution(* HealthWatcherFacade.search*(..));
+	
+    pointcut transactionalMethods(): execution(* HealthWatcherFacade.*(..)) && 
+    								 ! execution(* HealthWatcherFacade.*Record(..))  && 
+    								 ! execution(static * *.*(..));
     
     declare soft: TransactionException : 
         call(void IPersistenceMechanism.beginTransaction())    || 

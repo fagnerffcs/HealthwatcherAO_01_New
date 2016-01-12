@@ -2,14 +2,13 @@ package br.cin.ufpe.healthwatcher.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 import javax.persistence.PersistenceException;
 
 import lib.exceptions.ObjectNotFoundException;
 import br.cin.ufpe.healthwatcher.business.HealthWatcherFacade;
 import br.cin.ufpe.healthwatcher.model.employee.Employee;
 
-public class EmployeeConverter implements Converter {
+public class EmployeeConverter {
 
 	private static final long serialVersionUID = 391558762793887877L;
 	
