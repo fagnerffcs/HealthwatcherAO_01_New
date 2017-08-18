@@ -2,12 +2,11 @@ package br.cin.ufpe.healthwatcher.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 
 import br.cin.ufpe.healthwatcher.data.rdb.SpecialtyRepositoryRDB;
 import br.cin.ufpe.healthwatcher.model.healthguide.MedicalSpecialty;
 
-public class MedicalSpecialtyConverter implements Converter {
+public class MedicalSpecialtyConverter {
 
 	private static final long serialVersionUID = 6652584125887916341L;
 
