@@ -7,21 +7,21 @@
    <ui:define name="content">
 	  
 	  <f:metadata>
-		<f:viewParam name="complaint" value="#{updateComplaintRecord.complaint.codigo}" converter="#{complaintConverter}" />
-		<f:viewAction action="#{updateComplaintRecord.onLoad()}" />
+		<f:viewParam name="complaint" value="#{facade.updateComplaintRecord.complaint.code}" converter="#{complaintConverter}" />
+		<f:viewAction action="#{facade.updateComplaintRecord.onLoad()}" />
 	  </f:metadata>	
 
 	  <h:form id="form" style="text-align: center; margin: 10px;" >
   		  <h:messages id="messages" styleClass="messages" />
-		  <h4>Complaint : <h:outputText value="#{updateComplaintRecord.complaint.codigo}" /></h4>
-		  <h4>Complaint kind: <h:outputText value="#{updateComplaintRecord.complaintKind}" /> </h4>
-		  <h4>Description: <h:outputText value="#{updateComplaintRecord.complaint.descricao}" /></h4>
+		  <h4>Complaint : <h:outputText value="#{facade.updateComplaintRecord.complaint.code}" /></h4>
+		  <h4>Complaint kind: <h:outputText value="#{facade.updateComplaintRecord.complaintKind}" /> </h4>
+		  <h4>Description: <h:outputText value="#{facade.updateComplaintRecord.complaint.descricao}" /></h4>
 
 	  	  <h4>Observation (complaint's solution):</h4>
-	  	  <h:inputTextarea value="#{updateComplaintRecord.complaint.observacao}" rols="4" cols="25"  />
+	  	  <h:inputTextarea value="#{facade.updateComplaintRecord.complaint.observacao}" rols="4" cols="25"  />
 
 		  <div>
-			  <h:commandButton action="#{updateComplaintRecord.update(updateComplaintRecord.complaint)}" value="Update" />
+			  <h:commandButton action="#{facade.updateComplaintRecord.update(facade.updateComplaintRecord.complaint)}" value="Update" />
 			  <h:commandButton type="reset" value="Clear" />
 		  </div>
 	  </h:form>   	  

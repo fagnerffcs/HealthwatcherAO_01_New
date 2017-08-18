@@ -7,8 +7,8 @@
    <ui:define name="content">
    
 	  <f:metadata>
-		<f:viewParam name="complaint" value="#{updateComplaintRecord.complaint.codigo}" converter="#{complaintConverter}" />
-		<f:viewAction action="#{updateComplaintRecord.onLoad()}" />
+		<f:viewParam name="complaint" value="#{facade.updateComplaintRecord.complaint.code}" converter="#{complaintConverter}" />
+		<f:viewAction action="#{facade.updateComplaintRecord.onLoad()}" />
 	  </f:metadata>	   
 	  
 	  <h:form id="form" style="text-align: center; margin: 10px;" >
@@ -20,7 +20,7 @@
 			  <h:outputText value="Complaint updated" />
 		  </div>
 		  <div style="margin-top: 20px; text-align: left;">
-			  <h:outputText value="#{updateComplaintRecord.complaint.observacao}" />
+			  <h:outputText value="#{facade.updateComplaintRecord.complaint.observacao}" />
 		  </div>
 	  </h:form>   	  
 

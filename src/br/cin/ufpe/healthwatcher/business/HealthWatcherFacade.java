@@ -10,6 +10,8 @@ import br.cin.ufpe.healthwatcher.business.complaint.DiseaseRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.FoodComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.SearchComplaintRecord;
 import br.cin.ufpe.healthwatcher.business.complaint.SpecialComplaintRecord;
+import br.cin.ufpe.healthwatcher.business.complaint.UpdateComplaintRecord;
+import br.cin.ufpe.healthwatcher.business.employee.EmployeeLogin;
 import br.cin.ufpe.healthwatcher.business.employee.EmployeeRecord;
 import br.cin.ufpe.healthwatcher.business.healthguide.HealthUnitRecord;
 import br.cin.ufpe.healthwatcher.business.healthguide.MedicalSpecialtyRecord;
@@ -38,7 +40,11 @@ public class HealthWatcherFacade implements IFacade {
 
 	private EmployeeRecord employeeRecord;
 	
+	private EmployeeLogin employeeLogin;
+	
 	private SearchComplaintRecord searchComplaintRecord;
+	
+	private UpdateComplaintRecord updateComplaintRecord;
 
 	public ComplaintRecord getComplaintRecord() {
 		return complaintRecord;
@@ -106,12 +112,28 @@ public class HealthWatcherFacade implements IFacade {
 		this.employeeRecord = employeeRecord;
 	}
 
+	public EmployeeLogin getEmployeeLogin() {
+		return employeeLogin;
+	}
+
+	public void setEmployeeLogin(EmployeeLogin employeeLogin) {
+		this.employeeLogin = employeeLogin;
+	}
+
 	public SearchComplaintRecord getSearchComplaintRecord() {
 		return searchComplaintRecord;
 	}
 
 	public void setSearchComplaintRecord(SearchComplaintRecord searchComplaintRecord) {
 		this.searchComplaintRecord = searchComplaintRecord;
+	}
+
+	public UpdateComplaintRecord getUpdateComplaintRecord() {
+		return updateComplaintRecord;
+	}
+
+	public void setUpdateComplaintRecord(UpdateComplaintRecord updateComplaintRecord) {
+		this.updateComplaintRecord = updateComplaintRecord;
 	}
 
 	public HealthWatcherFacade() {
@@ -124,6 +146,8 @@ public class HealthWatcherFacade implements IFacade {
 		this.diseaseRecord = new DiseaseRecord(null);
 		this.employeeRecord = new EmployeeRecord(null);
 		this.searchComplaintRecord = new SearchComplaintRecord();
+		this.updateComplaintRecord = new UpdateComplaintRecord();
+		this.setEmployeeLogin(new EmployeeLogin());
 	}
 
 	public synchronized static HealthWatcherFacade getInstance() {
