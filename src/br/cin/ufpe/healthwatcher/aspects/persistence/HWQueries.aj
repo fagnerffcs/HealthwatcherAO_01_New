@@ -34,6 +34,11 @@ public aspect HWQueries {
 			@NamedQuery(name="listAllMedicalSpecialties", query="SELECT m FROM MedicalSpecialty m")
 		});
 	
+	declare @type : br.cin.ufpe.healthwatcher.model.complaint.DiseaseType :
+		@NamedQueries({
+			@NamedQuery(name="allDiseases", query="SELECT d FROM DiseaseType d")
+		});	
+	
 	//healthguide package
 	declare @type : br.cin.ufpe.healthwatcher.model.healthguide.HealthUnit :
 	@NamedQueries({
@@ -47,5 +52,6 @@ public aspect HWQueries {
 		@NamedQuery(name="specialComplaintByCode", query="SELECT s FROM SpecialComplaint s WHERE s.code = :code"),
 		@NamedQuery(name="allSpecialComplaints", query="SELECT s FROM SpecialComplaint s"),
 		@NamedQuery(name="specialComplaintsBySituation", query="SELECT s FROM SpecialComplaint s WHERE s.situacao = :situacao")
-	});	
+	});
+	
 }

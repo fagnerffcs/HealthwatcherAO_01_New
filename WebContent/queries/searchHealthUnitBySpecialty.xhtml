@@ -11,11 +11,11 @@
 	  
 	  <h:form>
 	  	 <h:panelGrid columns="1">
-			  <h:selectOneMenu value="#{facade.fCid.specialityRecord.selectedMedicalSpecialty}" converter="#{medicalSpecialtyConverter}">
-			  	<f:selectItems value="#{facade.fCid.specialityRecord.getListaEspecialidadeAsList()}" var="ms" itemValue="#{ms}" itemLabel="#{ms.description}" />
+			  <h:selectOneMenu value="#{facade.specialityRecord.selectedMedicalSpecialty}" converter="#{medicalSpecialtyConverter}">
+			  	<f:selectItems value="#{facade.specialityRecord.getListaEspecialidadeAsList()}" var="ms" itemValue="#{ms}" itemLabel="#{ms.description}" />
 			  </h:selectOneMenu>
 			
-			  <h:commandButton action="#{facade.fCid.specialityRecord.searchHealthUnits()}" value="Consultar" />
+			  <h:commandButton action="#{facade.specialityRecord.searchHealthUnits()}" value="Consultar" />
 			  
 			  <h:messages id="messages" styleClass="messages" />
 		  </h:panelGrid>  
