@@ -58,7 +58,7 @@ public class EmployeeLogin {
 				this.facade = HealthWatcherFacade.getInstance();				
 			}
 			employee = facade.searchEmployee(this.login);
-			if(employee.validatePassword(password)){
+			if(employee!=null && employee.validatePassword(password)){
 				this.logged = true;
 				setCookie();
 				return "/employee/menuEmployee?faces-redirect=true";
