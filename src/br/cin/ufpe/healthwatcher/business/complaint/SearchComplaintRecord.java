@@ -96,7 +96,9 @@ public class SearchComplaintRecord {
 				facade = HealthWatcherFacade.getInstance();
 			}
 			this.complaint = facade.searchComplaint(complaintCode);
-			facesContext.getExternalContext().getFlash().put("complaint", complaint.getCode());
+			if(this.complaint!=null) {
+				facesContext.getExternalContext().getFlash().put("complaint", complaint.getCode());
+			}
 			return "searchComplaintData?faces-redirect=true";			
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
