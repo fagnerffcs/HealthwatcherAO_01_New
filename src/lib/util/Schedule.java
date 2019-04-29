@@ -82,20 +82,22 @@ public class Schedule {
 	}
 
 	/**
-	 * Retorna a representaÁ„o string da hora que foi recebida
-	 * como par‚metro no formato representado pela constante formato.
+	 * Retorna a representa√ß√£o string da hora que foi recebida
+	 * como par√¢metro no formato representado pela constante formato.
 	 */
 	public String format(int formato) {
 		return format(this, formato);
 	}
 
 	/**
-	 * Retorna a representaÁ„o string da hora que foi recebida
-	 * como par‚metro no formato representado pela constante formato.
+	 * Retorna a representa√ß√£o string da hora que foi recebida
+	 * como par√¢metro no formato representado pela constante formato.
 	 */
 	public static String format(Schedule horario, int formato) {
 
-		String segundoStr = "", minutoStr = "", horaStr = "";
+		String  segundoStr = "", 
+			minutoStr = "", 
+			horaStr = "";
 		String texto = null;
 
 		try {
@@ -136,7 +138,7 @@ public class Schedule {
 	}
 
 	/**
-	 * DefiniÁ„o do MÈtodo
+	 * Defini√ß√£o do M√©todo
 	 *
 	 *
 	 * @return
@@ -148,7 +150,7 @@ public class Schedule {
 	}
 
 	/**
-	 * DefiniÁ„o do MÈtodo
+	 * Defini√ß√£o do M√©todo
 	 *
 	 *
 	 * @return
@@ -160,7 +162,7 @@ public class Schedule {
 	}
 
 	/**
-	 * DefiniÁ„o do MÈtodo
+	 * Defini√ß√£o do M√©todo
 	 *
 	 *
 	 * @return
@@ -173,12 +175,14 @@ public class Schedule {
 
 	/**
 	 * Transforma string em data.
-	 * recebe como par‚metro o String e o separador utilizado.
+	 * recebe como par√¢metro o String e o separador utilizado.
 	 */
 	public static Schedule stringToHorario(String horarioStr, int formato)
 			throws InvalidDateException {
 
-		String segundoStr = null, minutoStr = null, horaStr = null;
+		String  segundoStr = null, 
+			minutoStr = null, 
+			horaStr = null;
 		Schedule horario = null;
 
 		try {
@@ -211,7 +215,7 @@ public class Schedule {
 
 	/**
 	 * Valida uma data (dia, mes e ano), caso algum dos valores seja
-	 * inv·lido lanÁa a exceÁ„o DataInvalidaException
+	 * inv√°lido lan√ßa a exce√ß√£o DataInvalidaException
 	 */
 	private void validaHorario(int segundo, int minuto, int hora) throws InvalidDateException {
 
